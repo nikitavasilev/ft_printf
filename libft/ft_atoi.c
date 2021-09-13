@@ -6,7 +6,7 @@
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 18:11:38 by nvasilev          #+#    #+#             */
-/*   Updated: 2020/11/28 02:40:47 by nvasilev         ###   ########.fr       */
+/*   Updated: 2021/09/13 22:15:02 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static char	ft_add_numbers(const char *str, char sign, long *res)
 	return (1);
 }
 
-int			ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	long	res;
 	char	sign;

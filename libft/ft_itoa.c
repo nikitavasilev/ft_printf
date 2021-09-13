@@ -6,7 +6,7 @@
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 17:35:13 by nvasilev          #+#    #+#             */
-/*   Updated: 2020/12/26 00:19:04 by nvasilev         ###   ########.fr       */
+/*   Updated: 2021/09/13 22:18:19 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static size_t	count_chars(int num)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	if (num <= 0)
@@ -27,9 +27,9 @@ static size_t	count_chars(int num)
 	return (i);
 }
 
-static void		str_fill(char *str, int num, size_t i)
+static void	str_fill(char *str, int num, size_t i)
 {
-	unsigned int n;
+	unsigned int	n;
 
 	n = num;
 	if (num < 0)
@@ -39,13 +39,14 @@ static void		str_fill(char *str, int num, size_t i)
 	str[i] = (n % 10) + '0';
 }
 
-char			*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char	*res;
 	size_t	length;
 
 	length = count_chars(n);
-	if (!(res = malloc(length + 1)))
+	res = malloc(length + 1);
+	if (!res)
 		return (0);
 	if (n < 0)
 	{

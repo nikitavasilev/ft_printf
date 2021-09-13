@@ -6,7 +6,7 @@
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/20 14:39:31 by nvasilev          #+#    #+#             */
-/*   Updated: 2020/12/20 15:10:03 by nvasilev         ###   ########.fr       */
+/*   Updated: 2021/09/13 22:27:38 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	if (!s1 || !s2)
 		return (0);
-	if (!(str = malloc(ft_strlen(s1) + ft_strlen(s2) + 1)))
+	str = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!str)
 		return (0);
 	i = 0;
 	while (s1[i])

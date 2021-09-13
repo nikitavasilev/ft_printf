@@ -6,7 +6,7 @@
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/09 13:46:27 by nvasilev          #+#    #+#             */
-/*   Updated: 2020/12/20 15:12:36 by nvasilev         ###   ########.fr       */
+/*   Updated: 2021/09/13 22:44:52 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char	*str;
 	size_t	i;
 
-	if (!(str = malloc(len + 1)) || !s)
+	if (!s)
+		return (0);
+	str = malloc(len + 1);
+	if (!str)
 		return (0);
 	i = 0;
 	while (s[start + i] && i < len && start < ft_strlen(s))

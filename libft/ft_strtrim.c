@@ -6,7 +6,7 @@
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/20 15:14:35 by nvasilev          #+#    #+#             */
-/*   Updated: 2020/12/20 17:45:09 by nvasilev         ###   ########.fr       */
+/*   Updated: 2021/09/13 22:43:13 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static char	in_set(char c, const char *set)
 	return (0);
 }
 
-char		*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	i;
 	size_t	j;
@@ -38,7 +38,8 @@ char		*ft_strtrim(char const *s1, char const *set)
 	end = ft_strlen(s1);
 	while (end > i && in_set(s1[end - 1], set))
 		end--;
-	if (!(str = malloc(end - i + 1)))
+	str = malloc(end - i + 1);
+	if (!str)
 		return (0);
 	j = 0;
 	while (i + j < end)
