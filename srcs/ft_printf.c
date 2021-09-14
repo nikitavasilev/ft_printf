@@ -6,13 +6,13 @@
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 21:53:06 by nvasilev          #+#    #+#             */
-/*   Updated: 2021/09/13 22:06:23 by nvasilev         ###   ########.fr       */
+/*   Updated: 2021/09/14 22:54:58 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int	ft_printf(const char *, ...)
+int	ft_printf(const char *format, ...)
 {
 
 }
