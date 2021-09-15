@@ -6,7 +6,7 @@
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 22:58:29 by nvasilev          #+#    #+#             */
-/*   Updated: 2021/09/15 19:01:39 by nvasilev         ###   ########.fr       */
+/*   Updated: 2021/09/15 20:07:34 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,14 @@ void	putnbr_base(long long n, const char *base, char sign)
 	ft_putchar(base[n % len]);
 }
 
+void	putaddr(void *p)
+{
+	unsigned int addr;
+
+	addr = (unsigned int)&p;
+	putnbr_base(addr, "0123456789abcdef", 'u');
+}
+
 int	main(void)
 {
 	char *str = "test";
@@ -123,7 +131,8 @@ int	main(void)
 	ft_putstr(str);
 	ft_putstr(" (ft_putstr)");
 
-	printf("\n\np = %p (printf)\n", str);
+	printf("\n\np = %p (printf)\n", &str);
+	putaddr(&str);
 
 	printf("\n\nd = %d (printf)\n", INT_MAX + 1000);
 	ft_putstr("d = ");
