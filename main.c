@@ -6,7 +6,7 @@
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 22:58:29 by nvasilev          #+#    #+#             */
-/*   Updated: 2021/09/16 14:36:47 by nvasilev         ###   ########.fr       */
+/*   Updated: 2021/09/16 15:00:49 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	ft_putstr(char *s)
 	}
 }
 
+/*
 void	dec_to_hex(ssize_t nb, char format)
 {
 	const char	*base16;
@@ -91,25 +92,6 @@ void	ft_putnbr_u(unsigned int n)
 	ft_putchar(n % 10 + '0');
 }
 
-void	putnbr_base(long long n, const char *base, char sign)
-{
-	size_t	len;
-
-	if (sign == 'p')
-		n = (unsigned long int)n;
-	len = ft_strlen(base);
-	if (len == 16 || sign == 'u')
-		n = (unsigned)n;
-	if (n < 0)
-	{
-		ft_putchar('-');
-		n *= -1;
-	}
-	if (n >= len)
-		putnbr_base(n / len, base, sign);
-	ft_putchar(base[n % len]);
-}
-
 void	dec_to_hex_u(unsigned long nb)
 {
 	const char	*base16;
@@ -121,21 +103,43 @@ void	dec_to_hex_u(unsigned long nb)
 	}
 	ft_putchar(base16[nb % 16]);
 }
+*/
 
-void	putaddr(void *p)
+void	putnbr_base(long long n, const char *base, const char sign)
 {
-	unsigned long addr;
+	size_t	len;
+
+	len = ft_strlen(base);
+	if (sign == 'p')
+		n = (unsigned long)n;
+	else if (len == 16 || sign == 'u')
+		n = (unsigned)n;
+	if (n < 0)
+	{
+		ft_putchar('-');
+		n *= -1;
+	}
+	if (n >= len)
+		putnbr_base(n / len, base, sign);
+	ft_putchar(base[n % len]);
+}
+
+void	putaddr(const void *p)
+{
+	unsigned long	addr;
 
 	addr = (unsigned long)p;
 	ft_putstr("0x");
-	dec_to_hex_u(addr);
+	putnbr_base(addr, "0123456789abcdef", 'p');
 }
 
 int	main(void)
 {
-	char *str = "test";
-	int	nb = 42;
+	char	*str;
+	int		nb;
 
+	nb = 42;
+	str = "test";
 	printf("c = %c (printf)\n", str[0]);
 	ft_putstr("c = ");
 	ft_putchar(str[0]);
