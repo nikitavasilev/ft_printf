@@ -6,7 +6,7 @@
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 22:58:29 by nvasilev          #+#    #+#             */
-/*   Updated: 2021/09/16 15:00:49 by nvasilev         ###   ########.fr       */
+/*   Updated: 2021/09/16 15:22:39 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,14 +155,14 @@ int	main(void)
 	putaddr(&str);
 	ft_putstr(" (ft_putaddr)");
 
-	printf("\n\nd = %d (printf)\n", INT_MAX + 1000);
+	printf("\n\nd = %d (printf)\n", 0000000000101010);
 	ft_putstr("d = ");
-	putnbr_base(INT_MAX + 1000, "0123456789", 's');
+	putnbr_base(0000000000101010, "0123456789", 's');
 	ft_putstr(" (putnbr_base)");
 
-	printf("\n\ni = %i (printf)\n", INT_MIN);
+	printf("\n\ni = %i (printf)\n", 042);
 	ft_putstr("i = ");
-	putnbr_base(INT_MIN, "0123456789", 's');
+	putnbr_base(042, "0123456789", 's');
 	ft_putstr(" (putnbr_base)");
 
 	printf("\n\nu = %u (printf)\n", -42);
