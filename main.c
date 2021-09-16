@@ -6,7 +6,7 @@
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 22:58:29 by nvasilev          #+#    #+#             */
-/*   Updated: 2021/09/15 20:07:34 by nvasilev         ###   ########.fr       */
+/*   Updated: 2021/09/16 14:36:47 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ void	putnbr_base(long long n, const char *base, char sign)
 {
 	size_t	len;
 
+	if (sign == 'p')
+		n = (unsigned long int)n;
 	len = ft_strlen(base);
 	if (len == 16 || sign == 'u')
 		n = (unsigned)n;
@@ -108,12 +110,25 @@ void	putnbr_base(long long n, const char *base, char sign)
 	ft_putchar(base[n % len]);
 }
 
+void	dec_to_hex_u(unsigned long nb)
+{
+	const char	*base16;
+
+	base16 = "0123456789abcdef";
+	if (nb >= 16)
+	{
+		dec_to_hex_u(nb / 16);
+	}
+	ft_putchar(base16[nb % 16]);
+}
+
 void	putaddr(void *p)
 {
-	unsigned int addr;
+	unsigned long addr;
 
-	addr = (unsigned int)&p;
-	putnbr_base(addr, "0123456789abcdef", 'u');
+	addr = (unsigned long)p;
+	ft_putstr("0x");
+	dec_to_hex_u(addr);
 }
 
 int	main(void)
@@ -132,7 +147,9 @@ int	main(void)
 	ft_putstr(" (ft_putstr)");
 
 	printf("\n\np = %p (printf)\n", &str);
+	ft_putstr("p = ");
 	putaddr(&str);
+	ft_putstr(" (ft_putaddr)");
 
 	printf("\n\nd = %d (printf)\n", INT_MAX + 1000);
 	ft_putstr("d = ");
