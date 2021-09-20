@@ -6,7 +6,7 @@
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 22:58:29 by nvasilev          #+#    #+#             */
-/*   Updated: 2021/09/16 15:22:39 by nvasilev         ###   ########.fr       */
+/*   Updated: 2021/09/16 20:41:32 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,6 @@
 
 // http://www.firmcodes.com/write-printf-function-c/
 
-/*
-int	ft_printf(const char *format, ...)
-{
-	va_list	arg;
-	va_start(arg, format);
-
-	while (*format)
-	{
-
-	}
-
-	va_end(arg);
-}
-*/
 
 int	ft_putchar(int c)
 {
@@ -71,7 +57,7 @@ void	dec_to_hex(ssize_t nb, char format)
 		dec_to_hex(nb / 16, format);
 	}
 	ft_putchar(base16[nb % 16]);
-}
+}putnbr_base(va_arg(arg, int));
 
 void	ft_putnbr(int n)
 {
@@ -105,7 +91,7 @@ void	dec_to_hex_u(unsigned long nb)
 }
 */
 
-void	putnbr_base(long long n, const char *base, const char sign)
+int	putnbr_base(long long n, const char *base, const char sign, int count)
 {
 	size_t	len;
 
@@ -120,17 +106,62 @@ void	putnbr_base(long long n, const char *base, const char sign)
 		n *= -1;
 	}
 	if (n >= len)
-		putnbr_base(n / len, base, sign);
+		count += putnbr_base(n / len, base, sign, count++);
 	ft_putchar(base[n % len]);
+	return (count);
 }
 
-void	putaddr(const void *p)
+int	putaddr(const void *p, int count)
 {
 	unsigned long	addr;
 
 	addr = (unsigned long)p;
 	ft_putstr("0x");
-	putnbr_base(addr, "0123456789abcdef", 'p');
+	count += putnbr_base(addr, "0123456789abcdef", 'p', count) + 2;
+	 return (count);
+}
+
+int	ft_printf(const char *format, ...)
+{
+	int		i;
+	int		count;
+	va_list	arg;
+	va_start(arg, format);
+
+	i = 0;
+	count = 0;
+	while (*format)
+	{
+		if (*format == '%')
+		{
+			format++;
+			if (*format == 'c')
+				ft_putchar(va_arg(arg, int));
+			if (*format == 's')
+				ft_putstr(va_arg(arg, char*));
+			if (*format == 'p')
+				count += putaddr((va_arg(arg, void *)), 0);
+			if (*format == 'd')
+				count += putnbr_base(va_arg(arg, int), "0123456789", 's', 0);
+			if (*format == 'i')
+				count += putnbr_base(va_arg(arg, int), "0123456789", 's', 0);
+			if (*format == 'u')
+				count += putnbr_base(va_arg(arg, unsigned), "0123456789", 'u', 0);
+			if (*format == 'x')
+				count += putnbr_base(va_arg(arg, long long), "0123456789abcdef", 's', 0);
+			if (*format == 'X')
+				count += putnbr_base(va_arg(arg, long long), "0123456789ABCDEF", 's', 0);
+			if (*format == '%')
+				ft_putchar(va_arg(arg, int));
+		}
+		else
+			ft_putchar(*format);
+		format++;
+		i++;
+	}
+	va_end(arg);
+	printf("\nCOUNT = %d, I = %d\n", count, i);
+	return (i + count);
 }
 
 int	main(void)
@@ -140,7 +171,18 @@ int	main(void)
 
 	nb = 42;
 	str = "test";
-	printf("c = %c (printf)\n", str[0]);
+
+	printf("MINE:\n");
+	printf("\nRETURN: %d\n\n", ft_printf("Nombre: %d, adresse: %p", 42, &str));
+	//printf("\nRETURN: %d\n\n", ft_printf("Adresse: %p", &str));
+	//printf("\nRETURN: %d\n\n", ft_printf("M%d", 4243));
+	printf("REAL ONE:\n");
+	printf("\nRETURN: %d\n\n", printf("Nombre: %d, adresse: %p", 42, &str));
+	//printf("\nRETURN: %d\n\n", printf("Adresse: %p", &str));
+	//printf("\nRETURN: %d\n\n", printf("M%d", 4243));
+
+	/*
+	printf("\n\nc = %c (printf)\n", str[0]);
 	ft_putstr("c = ");
 	ft_putchar(str[0]);
 	ft_putstr(" (ft_putchar)");
@@ -184,6 +226,7 @@ int	main(void)
 	ft_putstr("% = ");
 	ft_putchar('%');
 	ft_putstr(" (ft_putchar)");
+	*/
 
 	return (0);
 }
