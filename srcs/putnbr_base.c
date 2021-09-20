@@ -1,38 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   putnbr_base.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/13 21:53:06 by nvasilev          #+#    #+#             */
-/*   Updated: 2021/09/20 16:31:23 by nvasilev         ###   ########.fr       */
+/*   Created: 2021/09/20 16:30:01 by nvasilev          #+#    #+#             */
+/*   Updated: 2021/09/20 17:14:16 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int	ft_printf(const char *format, ...)
+int	putnbr_base(int64_t n, const char *base, const char sign, int count)
 {
-	int		i;
-	int		count;
-	va_list	arg;
+	int64_t	len;
 
-	i = 0;
-	count = 0;
-	va_start(arg, format);
-	while (*format)
+	len = ft_strlen(base);
+	if (sign == 'p')
+		n = (uint64_t)n;
+	else if (len == 16 || sign == 'u')
+		n = (unsigned)n;
+	if (n < 0)
 	{
-		if (*format == '%')
-		{
-			format++;
-			count = format_specifier(*format, count, arg);
-		}
-		else
-			ft_putchar(*format);
-		i++;
-		format++;
+		ft_putchar('-');
+		n *= -1;
 	}
-	va_end(arg);
-	return (i + count);
+	if (n >= len)
+	{
+		count += putnbr_base(n / len, base, sign, count);
+		count++;
+	}
+	ft_putchar(base[n % len]);
+	return (count);
 }
