@@ -6,7 +6,7 @@
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 16:30:33 by nvasilev          #+#    #+#             */
-/*   Updated: 2021/09/20 21:19:26 by nvasilev         ###   ########.fr       */
+/*   Updated: 2021/09/20 21:54:49 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	putaddr(const void *p, int count)
 {
-	uintmax_t	addr;
+	size_t	addr;
 
-	addr = (uintmax_t)p;
+	addr = (size_t)p;
 	ft_putstr("0x");
-	count += putnbr_base(addr, HEX_MIN, 'p', count) + 2;
-	 return (count);
+	count += putnbr_base_u(addr, HEX_MIN, count) + 2;
+	return (count);
 }
