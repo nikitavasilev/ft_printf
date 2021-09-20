@@ -6,7 +6,7 @@
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 21:52:48 by nvasilev          #+#    #+#             */
-/*   Updated: 2021/09/20 20:55:42 by nvasilev         ###   ########.fr       */
+/*   Updated: 2021/09/20 21:57:50 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@
 int		ft_putchar(int c);
 size_t	ft_putstr(char *s);
 size_t	ft_strlen(const char *s);
-int		putnbr_base(intmax_t n, const char *base, const char sign, int count);
+int		putnbr_base_s(int64_t n, const char *base, int count);
+int		putnbr_base_u(size_t n, const char *base, int count);
 int		putaddr(const void *p, int count);
 int		format_specifier(const char format, int count, va_list arg);
 int		ft_printf(const char *format, ...);
