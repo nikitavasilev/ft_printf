@@ -6,7 +6,7 @@
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 21:53:06 by nvasilev          #+#    #+#             */
-/*   Updated: 2021/09/20 20:11:14 by nvasilev         ###   ########.fr       */
+/*   Updated: 2021/09/20 21:25:20 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	ft_printf(const char *format, ...)
 		{
 			format++;
 			count += format_specifier(*format, count, arg);
-			printf("\nCOUNT = %d\n", count);
 		}
 		else
 		{
