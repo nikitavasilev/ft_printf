@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo 'Removing all extra files'
+rm .gitignore
+rm README.md
+rm main.c
+rm -rf subjects/
+sleep 1
+
+echo 'PROJECT READY FOR PRODUCTION'
+sleep 1
+
+echo 'DELETING SCRIPT...'
+echo 'DONE :)'
+sleep 1
+
+rm production
