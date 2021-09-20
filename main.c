@@ -6,7 +6,7 @@
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 22:58:29 by nvasilev          #+#    #+#             */
-/*   Updated: 2021/09/20 17:19:10 by nvasilev         ###   ########.fr       */
+/*   Updated: 2021/09/20 21:30:10 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,16 @@ int	main(void)
 	char	*str;
 
 	str = "test";
-	printf("MINE:\n");
-	printf("\nRETURN: %d\n\n", ft_printf("Nombre: %d, adresse: %p, percent: %%", 42, &str));
+	//printf("MINE:\n");
+	//printf("\nRETURN: %d\n\n", ft_printf("Nombre: %d, adresse: %p, percent: %%", 42, &str));
+	ft_putstr("TESTER (ft_printf):\n");
+	printf("return: %d\n\n", ft_printf(" %p %p ", LONG_MIN, LONG_MAX));
 	//printf("\nRETURN: %d\n\n", ft_printf("Adresse: %p", &str));
 	//printf("\nRETURN: %d\n\n", ft_printf("M%d", 4243));
-	printf("REAL ONE:\n");
-	printf("\nRETURN: %d\n\n", printf("Nombre: %d, adresse: %p, percent: %%", 42, &str));
+	//printf("REAL ONE:\n");
+	//printf("\nRETURN: %d\n\n", printf("Nombre: %d, adresse: %p, percent: %%", 42, &str));
+	printf("\nTESTER (printf):\n");
+	printf("return: %d\n\n", printf(" %p %p ", LONG_MIN, LONG_MAX));
 	//printf("\nRETURN: %d\n\n", printf("Adresse: %p", &str));
 	//printf("\nRETURN: %d\n\n", printf("M%d", 4243));
 
