@@ -6,7 +6,7 @@
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 16:31:09 by nvasilev          #+#    #+#             */
-/*   Updated: 2021/09/20 21:20:44 by nvasilev         ###   ########.fr       */
+/*   Updated: 2021/09/20 21:57:29 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@ int	format_specifier(const char format, int count, va_list arg)
 	if (format == 'p')
 		count = putaddr((va_arg(arg, void *)), 0);
 	if (format == 'd')
-		count = putnbr_base(va_arg(arg, int), DEC, 's', 0);
+		count = putnbr_base_s(va_arg(arg, int), DEC, 0);
 	if (format == 'i')
-		count = putnbr_base(va_arg(arg, int), DEC, 's', 0);
+		count = putnbr_base_s(va_arg(arg, int), DEC, 0);
 	if (format == 'u')
-		count = putnbr_base(va_arg(arg, unsigned), DEC, 'u', 0);
+		count = putnbr_base_u(va_arg(arg, unsigned), DEC, 0);
 	if (format == 'x')
-		count = putnbr_base(va_arg(arg, int64_t), HEX_MIN, 's', 0);
+		count = putnbr_base_s(va_arg(arg, int64_t), HEX_MIN, 0);
 	if (format == 'X')
-		count = putnbr_base(va_arg(arg, int64_t), HEX_MAJ, 's', 0);
+		count = putnbr_base_s(va_arg(arg, int64_t), HEX_MAJ, 0);
 	if (format == '%')
 		ft_putchar('%');
 	if (format == 'c' || format == '%')
