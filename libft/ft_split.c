@@ -6,7 +6,7 @@
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/20 17:50:34 by nvasilev          #+#    #+#             */
-/*   Updated: 2021/09/13 22:41:34 by nvasilev         ###   ########.fr       */
+/*   Updated: 2021/09/16 22:26:01 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static size_t	count_words(const char *str, char c)
 	return (count);
 }
 
-static int	free_if_error(char **strs)
+static char	**free_if_error(char **strs)
 {
 	size_t	i;
 
@@ -68,7 +68,7 @@ char	**ft_split(char const *s, char c)
 
 	res = malloc((count_words(s, c) + 1) * sizeof(res));
 	if (!s || !res)
-		return (free_if_error(res));
+		return (0);
 	row = 0;
 	i = 0;
 	while (row < count_words(s, c))
