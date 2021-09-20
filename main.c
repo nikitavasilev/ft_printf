@@ -6,7 +6,7 @@
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 22:58:29 by nvasilev          #+#    #+#             */
-/*   Updated: 2021/09/20 21:30:10 by nvasilev         ###   ########.fr       */
+/*   Updated: 2021/09/20 23:32:17 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,17 @@ int	main(void)
 	str = "test";
 	//printf("MINE:\n");
 	//printf("\nRETURN: %d\n\n", ft_printf("Nombre: %d, adresse: %p, percent: %%", 42, &str));
+
 	ft_putstr("TESTER (ft_printf):\n");
-	printf("return: %d\n\n", ft_printf(" %p %p ", LONG_MIN, LONG_MAX));
+	printf("return: %d\n\n", ft_printf(" NULL %s NULL ", NULL));
+	printf("return: %d\n\n", ft_printf(" %p %p ", 0, 0));
 	//printf("\nRETURN: %d\n\n", ft_printf("Adresse: %p", &str));
 	//printf("\nRETURN: %d\n\n", ft_printf("M%d", 4243));
 	//printf("REAL ONE:\n");
 	//printf("\nRETURN: %d\n\n", printf("Nombre: %d, adresse: %p, percent: %%", 42, &str));
 	printf("\nTESTER (printf):\n");
-	printf("return: %d\n\n", printf(" %p %p ", LONG_MIN, LONG_MAX));
+	printf("return: %d\n\n", printf(" NULL %s NULL ", NULL));
+	printf("return: %d\n\n", printf(" %p %p ", 0, 0));
 	//printf("\nRETURN: %d\n\n", printf("Adresse: %p", &str));
 	//printf("\nRETURN: %d\n\n", printf("M%d", 4243));
 
@@ -60,22 +63,22 @@ int	main(void)
 	ft_putstr("u = ");
 	putnbr_base(-42, "0123456789", 'u');
 	ft_putstr(" (putnbr_base)");
-
-	printf("\n\nx = %x (printf)\n", nb);
+*/
+	printf("\n\nx = %x (printf)\n", 42);
 	ft_putstr("x = ");
-	putnbr_base(nb, "0123456789abcdef", 's');
+	putnbr_base_s(42, "0123456789abcdef", 0);
 	ft_putstr(" (putnbr_base)");
 
-	printf("\n\nX = %X (printf)\n", -nb);
+	printf("\n\nX = %X (printf)\n", -42);
 	ft_putstr("X = ");
-	putnbr_base(-nb, "0123456789ABCDEF", 's');
+	putnbr_base_s(-42, "0123456789ABCDEF", 0);
 	ft_putstr(" (putnbr_base)");
 
 	printf("\n\n%% = %% (printf)\n");
 	ft_putstr("% = ");
 	ft_putchar('%');
 	ft_putstr(" (ft_putchar)");
-	*/
+
 
 	return (0);
 }
