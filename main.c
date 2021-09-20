@@ -6,178 +6,23 @@
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 22:58:29 by nvasilev          #+#    #+#             */
-/*   Updated: 2021/09/16 20:41:32 by nvasilev         ###   ########.fr       */
+/*   Updated: 2021/09/20 17:19:10 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <limits.h>
 #include "includes/ft_printf.h"
-
-// http://www.firmcodes.com/write-printf-function-c/
-
-
-int	ft_putchar(int c)
-{
-	return (write(1, &c, 1));
-}
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
-
-void	ft_putstr(char *s)
-{
-	if (s)
-	{
-		while (*s)
-		{
-			ft_putchar(*s);
-			s++;
-		}
-	}
-}
-
-/*
-void	dec_to_hex(ssize_t nb, char format)
-{
-	const char	*base16;
-
-	if (format == 'X')
-		base16 = "0123456789ABCDEF";
-	else
-		base16 = "0123456789abcdef";
-	if (nb >= 16)
-	{
-		dec_to_hex(nb / 16, format);
-	}
-	ft_putchar(base16[nb % 16]);
-}putnbr_base(va_arg(arg, int));
-
-void	ft_putnbr(int n)
-{
-	if (n < 0)
-	{
-		ft_putchar('-');
-		n *= -1;
-	}
-	if ((unsigned int)n >= 10)
-		ft_putnbr((unsigned int)n / 10);
-	ft_putchar((unsigned int)n % 10 + '0');
-}
-
-void	ft_putnbr_u(unsigned int n)
-{
-	if (n >= 10)
-		ft_putnbr(n / 10);
-	ft_putchar(n % 10 + '0');
-}
-
-void	dec_to_hex_u(unsigned long nb)
-{
-	const char	*base16;
-
-	base16 = "0123456789abcdef";
-	if (nb >= 16)
-	{
-		dec_to_hex_u(nb / 16);
-	}
-	ft_putchar(base16[nb % 16]);
-}
-*/
-
-int	putnbr_base(long long n, const char *base, const char sign, int count)
-{
-	size_t	len;
-
-	len = ft_strlen(base);
-	if (sign == 'p')
-		n = (unsigned long)n;
-	else if (len == 16 || sign == 'u')
-		n = (unsigned)n;
-	if (n < 0)
-	{
-		ft_putchar('-');
-		n *= -1;
-	}
-	if (n >= len)
-		count += putnbr_base(n / len, base, sign, count++);
-	ft_putchar(base[n % len]);
-	return (count);
-}
-
-int	putaddr(const void *p, int count)
-{
-	unsigned long	addr;
-
-	addr = (unsigned long)p;
-	ft_putstr("0x");
-	count += putnbr_base(addr, "0123456789abcdef", 'p', count) + 2;
-	 return (count);
-}
-
-int	ft_printf(const char *format, ...)
-{
-	int		i;
-	int		count;
-	va_list	arg;
-	va_start(arg, format);
-
-	i = 0;
-	count = 0;
-	while (*format)
-	{
-		if (*format == '%')
-		{
-			format++;
-			if (*format == 'c')
-				ft_putchar(va_arg(arg, int));
-			if (*format == 's')
-				ft_putstr(va_arg(arg, char*));
-			if (*format == 'p')
-				count += putaddr((va_arg(arg, void *)), 0);
-			if (*format == 'd')
-				count += putnbr_base(va_arg(arg, int), "0123456789", 's', 0);
-			if (*format == 'i')
-				count += putnbr_base(va_arg(arg, int), "0123456789", 's', 0);
-			if (*format == 'u')
-				count += putnbr_base(va_arg(arg, unsigned), "0123456789", 'u', 0);
-			if (*format == 'x')
-				count += putnbr_base(va_arg(arg, long long), "0123456789abcdef", 's', 0);
-			if (*format == 'X')
-				count += putnbr_base(va_arg(arg, long long), "0123456789ABCDEF", 's', 0);
-			if (*format == '%')
-				ft_putchar(va_arg(arg, int));
-		}
-		else
-			ft_putchar(*format);
-		format++;
-		i++;
-	}
-	va_end(arg);
-	printf("\nCOUNT = %d, I = %d\n", count, i);
-	return (i + count);
-}
 
 int	main(void)
 {
 	char	*str;
-	int		nb;
 
-	nb = 42;
 	str = "test";
-
 	printf("MINE:\n");
-	printf("\nRETURN: %d\n\n", ft_printf("Nombre: %d, adresse: %p", 42, &str));
+	printf("\nRETURN: %d\n\n", ft_printf("Nombre: %d, adresse: %p, percent: %%", 42, &str));
 	//printf("\nRETURN: %d\n\n", ft_printf("Adresse: %p", &str));
 	//printf("\nRETURN: %d\n\n", ft_printf("M%d", 4243));
 	printf("REAL ONE:\n");
-	printf("\nRETURN: %d\n\n", printf("Nombre: %d, adresse: %p", 42, &str));
+	printf("\nRETURN: %d\n\n", printf("Nombre: %d, adresse: %p, percent: %%", 42, &str));
 	//printf("\nRETURN: %d\n\n", printf("Adresse: %p", &str));
 	//printf("\nRETURN: %d\n\n", printf("M%d", 4243));
 
