@@ -6,20 +6,24 @@
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 16:29:27 by nvasilev          #+#    #+#             */
-/*   Updated: 2021/09/20 16:29:28 by nvasilev         ###   ########.fr       */
+/*   Updated: 2021/09/20 18:08:25 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	ft_putstr(char *s)
+size_t	ft_putstr(char *s)
 {
+	size_t	i;
+
+	i = 0;
 	if (s)
 	{
-		while (*s)
+		while (s[i])
 		{
-			ft_putchar(*s);
-			s++;
+			ft_putchar(s[i]);
+			i++;
 		}
 	}
+	return (i);
 }
