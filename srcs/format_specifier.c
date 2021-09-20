@@ -6,7 +6,7 @@
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 16:31:09 by nvasilev          #+#    #+#             */
-/*   Updated: 2021/09/20 21:57:29 by nvasilev         ###   ########.fr       */
+/*   Updated: 2021/09/20 23:23:12 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int	format_specifier(const char format, int count, va_list arg)
 	if (format == 'c')
 		ft_putchar(va_arg(arg, int));
 	if (format == 's')
-		count = ft_putstr(va_arg(arg, char *));
+		count = check_null_s(va_arg(arg, char *));
 	if (format == 'p')
-		count = putaddr((va_arg(arg, void *)), 0);
+		count = check_null_p(va_arg(arg, void *));
 	if (format == 'd')
 		count = putnbr_base_s(va_arg(arg, int), DEC, 0);
 	if (format == 'i')
