@@ -6,7 +6,7 @@
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 21:53:06 by nvasilev          #+#    #+#             */
-/*   Updated: 2021/09/20 16:31:23 by nvasilev         ###   ########.fr       */
+/*   Updated: 2021/09/20 20:11:14 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 int	ft_printf(const char *format, ...)
 {
-	int		i;
 	int		count;
 	va_list	arg;
 
-	i = 0;
 	count = 0;
 	va_start(arg, format);
 	while (*format)
@@ -26,13 +24,16 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			count = format_specifier(*format, count, arg);
+			count += format_specifier(*format, count, arg);
+			printf("\nCOUNT = %d\n", count);
 		}
 		else
+		{
 			ft_putchar(*format);
-		i++;
+			count++;
+		}
 		format++;
 	}
 	va_end(arg);
-	return (i + count);
+	return (count);
 }
