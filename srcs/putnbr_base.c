@@ -6,7 +6,7 @@
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 16:30:01 by nvasilev          #+#    #+#             */
-/*   Updated: 2021/09/20 22:02:13 by nvasilev         ###   ########.fr       */
+/*   Updated: 2021/09/20 22:28:02 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	putnbr_base_s(int64_t n, const char *base, int count)
 
 	count++;
 	len = ft_strlen(base);
+	if (len == 16)
+		n = (unsigned)n;
 	if (n < 0)
 	{
 		ft_putchar('-');
