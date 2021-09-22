@@ -6,7 +6,7 @@
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 22:58:29 by nvasilev          #+#    #+#             */
-/*   Updated: 2021/09/20 23:32:17 by nvasilev         ###   ########.fr       */
+/*   Updated: 2021/09/22 22:54:03 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ int	main(void)
 
 	ft_putstr("TESTER (ft_printf):\n");
 	printf("return: %d\n\n", ft_printf(" NULL %s NULL ", NULL));
-	printf("return: %d\n\n", ft_printf(" %p %p ", 0, 0));
+	printf("return: %d\n\n", ft_printf(" %p %p ", NULL, NULL));
 	//printf("\nRETURN: %d\n\n", ft_printf("Adresse: %p", &str));
 	//printf("\nRETURN: %d\n\n", ft_printf("M%d", 4243));
 	//printf("REAL ONE:\n");
 	//printf("\nRETURN: %d\n\n", printf("Nombre: %d, adresse: %p, percent: %%", 42, &str));
 	printf("\nTESTER (printf):\n");
 	printf("return: %d\n\n", printf(" NULL %s NULL ", NULL));
-	printf("return: %d\n\n", printf(" %p %p ", 0, 0));
+	printf("return: %d\n\n", printf(" %p %p ", NULL, NULL));
 	//printf("\nRETURN: %d\n\n", printf("Adresse: %p", &str));
 	//printf("\nRETURN: %d\n\n", printf("M%d", 4243));
 
