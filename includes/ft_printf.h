@@ -6,7 +6,7 @@
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 21:52:48 by nvasilev          #+#    #+#             */
-/*   Updated: 2021/09/20 23:30:11 by nvasilev         ###   ########.fr       */
+/*   Updated: 2021/09/22 23:05:28 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 
 # ifdef __linux__
 #  define RET_NULL "(nil)"
+# elif __APPLE__
+#  define RET_NULL "0x0"
 # else
 #  define RET_NULL "(null)"
 # endif
