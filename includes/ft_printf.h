@@ -6,7 +6,7 @@
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 21:52:48 by nvasilev          #+#    #+#             */
-/*   Updated: 2021/09/22 23:05:28 by nvasilev         ###   ########.fr       */
+/*   Updated: 2021/09/23 02:54:51 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int		putnbr_base_u(size_t n, const char *base, int count);
 int		putaddr(const void *p, int count);
 int		check_null_p(void *p);
 int		check_null_s(char *s);
+int		isnum(const char c);
+int		*bonus_check(const char *format, int *count, va_list arg);
 int		format_specifier(const char format, int count, va_list arg);
 int		ft_printf(const char *format, ...);
 

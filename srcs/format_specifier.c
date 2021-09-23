@@ -6,11 +6,62 @@
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 16:31:09 by nvasilev          #+#    #+#             */
-/*   Updated: 2021/09/20 23:23:12 by nvasilev         ###   ########.fr       */
+/*   Updated: 2021/09/23 02:54:58 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+
+int	isnum(const char c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}
+
+static size_t	count_chars(int num)
+{
+	size_t i;
+
+	i = 0;
+	if (num <= 0)
+		i++;
+	while (num)
+	{
+		num /= 10;
+		i++;
+	}
+	return (i);
+}
+
+int	*bonus_check(const char *format, int *count, va_list arg)
+{
+	size_t	i;
+	int		zeros;
+	va_list	num;
+	int		n;
+
+	if (*format == '0')
+	{
+		i = 1;
+		while (isnum(format[i]))
+			i++;
+		if (format[i] == 'd' || format[i] == 'i' || format[i] == 'u')
+		{
+			va_copy(num, arg);
+			n = va_arg(num, int);
+			zeros = atoi(format) - count_chars(n);
+
+			format += i;
+			count[1] = i;
+			count[0] = zeros;
+			while (zeros--)
+				ft_putchar('0');
+			count[0] += format_specifier(*format, zeros, arg);
+		}
+	}
+	return (count);
+}
 
 int	format_specifier(const char format, int count, va_list arg)
 {
