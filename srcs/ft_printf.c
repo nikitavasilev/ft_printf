@@ -6,7 +6,7 @@
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 21:53:06 by nvasilev          #+#    #+#             */
-/*   Updated: 2021/09/27 10:57:07 by nvasilev         ###   ########.fr       */
+/*   Updated: 2021/09/27 12:32:10 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			if (*format == '.' || *format == '0' || *format == '-' || *format == '#' || *format == '+' || *format == ' ')
+			if (*format == '.' || *format == '0' || *format == '-'
+				|| *format == '#' || *format == '+' || *format == ' ')
 			{
 				tmp = bonus_check(format, count, arg);
 				count[0] = tmp[0];
