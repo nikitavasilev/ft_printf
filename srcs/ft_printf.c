@@ -6,7 +6,7 @@
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 21:53:06 by nvasilev          #+#    #+#             */
-/*   Updated: 2021/09/27 12:32:10 by nvasilev         ###   ########.fr       */
+/*   Updated: 2021/09/27 10:50:55 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,30 @@ void	init_arr(int *arr, size_t size)
 	}
 }
 
+const char	*prec_and_padd(int *count, int *tmp, const char *form, va_list arg)
+{
+	if (*form == '.' || *form == '0' || *form == '-'
+		|| *form == '#' || *form == '+' || *form == ' ')
+	{
+		tmp = precision_parser(form, count, arg);
+		count[0] = tmp[0];
+		if (*form == '#' || *form == '+' || *form == ' ')
+			form++;
+		else
+			form += tmp[1];
+	}
+	else
+		count[0] += format_specifier(*form, count[0], arg);
+	return (form);
+}
+
 int	ft_printf(const char *format, ...)
 {
 	int		count[2];
 	int		*tmp;
 	va_list	arg;
 
+	tmp = NULL;
 	init_arr(count, 2);
 	va_start(arg, format);
 	while (*format)
@@ -37,18 +55,7 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			if (*format == '.' || *format == '0' || *format == '-'
-				|| *format == '#' || *format == '+' || *format == ' ')
-			{
-				tmp = bonus_check(format, count, arg);
-				count[0] = tmp[0];
-				if (*format == '#' || *format == '+' || *format == ' ')
-					format++;
-				else
-					format += tmp[1];
-			}
-			else
-				count[0] += format_specifier(*format, count[0], arg);
+			format = prec_and_padd(count, tmp, format, arg);
 		}
 		else
 		{

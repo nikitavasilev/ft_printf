@@ -6,7 +6,7 @@
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 21:52:48 by nvasilev          #+#    #+#             */
-/*   Updated: 2021/09/27 06:08:22 by nvasilev         ###   ########.fr       */
+/*   Updated: 2021/09/27 11:15:16 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,38 @@ typedef enum e_boolean {FALSE, TRUE}	t_boolean;
 #  define RET_NULL "(null)"
 # endif
 
+// LIBFT FUNCTIONS
 int		ft_putchar(int c);
 size_t	ft_putstr(char *s);
 int		ft_isdigit(int c);
 int		ft_atoi(const char *str);
 size_t	ft_strlen(const char *s);
-int		putnbr_base_s(int64_t n, const char *base, int count);
+int		isnum(const char c);
+
+int		putnbr_base_s(int64_t n, const char *base, int count, int minus);
 int		putnbr_base_u(size_t n, const char *base, int count);
 int		putaddr(const void *p, int count);
 int		check_null_p(void *p);
 int		check_null_s(char *s);
-int		isnum(const char c);
-int		*bonus_check(const char *format, int *count, va_list arg);
+size_t	count_chars(int64_t num, const char *base);
+
+int		*zero_check(const char *format, int *count, va_list arg);
+
+// ZERO CHECK UTILITIES
+char	*create_base(const char *format, size_t i);
+int64_t	cpy_list(const char *format, size_t i, va_list arg);
+int		*print_minus(int *count, int64_t *num);
+int		*print_zeros(int zeros, int64_t *num, char *base, int *count);
+size_t	check_dot(const char *format, int *dot);
+
+int		*minus_padding(const char *format, int *count, va_list arg);
+void	sharp_check(const char *format, int *count, int64_t num, va_list arg);
+void	space_and_sign(const char *form, int *count, int64_t num, va_list arg);
+
+int		*dot_precision(const char *format, int *count, va_list arg);
+
+// PARSERS
+int		*precision_parser(const char *format, int *count, va_list arg);
 int		format_specifier(const char format, int count, va_list arg);
 int		ft_printf(const char *format, ...);
 

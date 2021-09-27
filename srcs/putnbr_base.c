@@ -6,13 +6,13 @@
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 16:30:01 by nvasilev          #+#    #+#             */
-/*   Updated: 2021/09/27 03:22:19 by nvasilev         ###   ########.fr       */
+/*   Updated: 2021/09/27 10:52:08 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int	putnbr_base_s(int64_t n, const char *base, int count)
+int	putnbr_base_s(int64_t n, const char *base, int count, int minus)
 {
 	int64_t	len;
 
@@ -22,12 +22,13 @@ int	putnbr_base_s(int64_t n, const char *base, int count)
 		n = (unsigned)n;
 	if (n < 0)
 	{
-		ft_putchar('-');
+		if (minus)
+			ft_putchar('-');
 		n *= -1;
 		count++;
 	}
 	if (n >= len)
-		count = putnbr_base_s(n / len, base, count);
+		count = putnbr_base_s(n / len, base, count, minus);
 	ft_putchar(base[n % len]);
 	return (count);
 }

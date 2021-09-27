@@ -15,7 +15,14 @@ SRCS =		./srcs/ft_putchar.c \
 			./srcs/ft_printf.c \
 			./srcs/check_null.c \
 			./srcs/ft_isdigit.c \
-			./srcs/ft_atoi.c
+			./srcs/ft_atoi.c \
+			./srcs/count_chars.c \
+			./srcs/dot_check.c \
+			./srcs/minus_padding.c \
+			./srcs/sharp_check.c \
+			./srcs/space_and_sign.c \
+			./srcs/utilities_zero_check.c \
+			./srcs/zero_check.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -38,5 +45,7 @@ fclean:	clean
 	$(RM) $(NAME)
 
 re:	fclean all
+
+bonus: all
 
 .PHONY: bonus so all clean fclean re

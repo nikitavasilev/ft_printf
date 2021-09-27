@@ -6,7 +6,7 @@
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 22:58:29 by nvasilev          #+#    #+#             */
-/*   Updated: 2021/09/27 10:48:07 by nvasilev         ###   ########.fr       */
+/*   Updated: 2021/09/27 07:08:23 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(void)
 	//printf("RET: %d\n", ft_printf("str= %s\n", "yes"));
 	//ft_printf("\ns = %s (ft_printf)\n", str);
 	//printf("s = %s (printf)\n", str);
-/*
+
 	ft_printf("TESTER (ft_printf):\n");
 	printf("return: %d\n\n", ft_printf(" NULL %s NULL ", NULL));
 	printf("return: %d\n\n", ft_printf(" %p %p ", NULL, NULL));
@@ -82,6 +82,6 @@ int	main(void)
 
 	printf("\n\nMIX: (printf)");
 	printf("\nRETURN: %d", printf("\nNombre: %d, adresse: %p, percent: %%", 42, &str));
-*/
+
 	return (0);
 }
