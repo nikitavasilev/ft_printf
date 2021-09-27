@@ -13,7 +13,9 @@ SRCS =		./srcs/ft_putchar.c \
 			./srcs/putnbr_base.c \
 			./srcs/format_specifier.c \
 			./srcs/ft_printf.c \
-			./srcs/check_null.c
+			./srcs/check_null.c \
+			./srcs/ft_isdigit.c \
+			./srcs/ft_atoi.c
 
 OBJS = $(SRCS:.c=.o)
 
