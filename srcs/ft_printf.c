@@ -6,7 +6,7 @@
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 21:53:06 by nvasilev          #+#    #+#             */
-/*   Updated: 2021/09/23 02:52:30 by nvasilev         ###   ########.fr       */
+/*   Updated: 2021/09/27 10:40:43 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,14 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			tmp = bonus_check(format, count, arg);
-			count[0] = tmp[0];
-			format += tmp[1];
+			if (*format == '.' || *format == '0' || *format == '-' || *format == '#' || *format == '+' || *format == ' ')
+			{
+				tmp = bonus_check(format, count, arg);
+				count[0] = tmp[0];
+				format++;
+			}
+			else
+				count[0] += format_specifier(*format, count[0], arg);
 		}
 		else
 		{

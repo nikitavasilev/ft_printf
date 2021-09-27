@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_null.c                                       :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/20 23:11:25 by nvasilev          #+#    #+#             */
-/*   Updated: 2021/09/27 05:00:09 by nvasilev         ###   ########.fr       */
+/*   Created: 2021/09/27 00:09:16 by nvasilev          #+#    #+#             */
+/*   Updated: 2021/09/27 00:09:40 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
-
-int	check_null_s(char *s)
+int	ft_isdigit(int c)
 {
-	if (!s)
-		return (ft_putstr("(null)"));
-	else
-		return (ft_putstr(s));
-}
-
-int	check_null_p(void *p)
-{
-	if (!p)
-		return (ft_putstr(RET_NULL));
-	else
-		return (putaddr(p, 0));
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }

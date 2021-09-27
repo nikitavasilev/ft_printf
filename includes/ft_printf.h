@@ -6,7 +6,7 @@
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 21:52:48 by nvasilev          #+#    #+#             */
-/*   Updated: 2021/09/23 02:54:51 by nvasilev         ###   ########.fr       */
+/*   Updated: 2021/09/27 06:08:22 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <stdarg.h>
 # include <stdint.h>
 # include <limits.h>
+
+typedef enum e_boolean {FALSE, TRUE}	t_boolean;
 
 # define DEC "0123456789"
 # define HEX_MAJ "0123456789ABCDEF"
@@ -34,6 +36,8 @@
 
 int		ft_putchar(int c);
 size_t	ft_putstr(char *s);
+int		ft_isdigit(int c);
+int		ft_atoi(const char *str);
 size_t	ft_strlen(const char *s);
 int		putnbr_base_s(int64_t n, const char *base, int count);
 int		putnbr_base_u(size_t n, const char *base, int count);

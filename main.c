@@ -6,7 +6,7 @@
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 22:58:29 by nvasilev          #+#    #+#             */
-/*   Updated: 2021/09/23 03:03:48 by nvasilev         ###   ########.fr       */
+/*   Updated: 2021/09/27 10:48:07 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,29 @@ int	main(void)
 	char	*str;
 
 	str = "test";
+	char c = 'j';
 
-	printf("RET: %d\n", printf("%010i\n", 25987));
-	printf("RET: %d\n", printf("%.2s\n", str));
-	printf("RET: %d\n", ft_printf("%010i\n", 25987));
+	//printf("RET: %d\n", printf(" %+i ", 0));
+	printf("RET: %d\n", ft_printf("% s", ""));
+	//printf("RET: %d\n", ft_printf(" %+d ", -1));
+	//printf("RET: %d\n", printf(" %#x%#x ", INT_MAX, INT_MIN));
+	//printf("RET: %d\n", printf(" %#X %#X %#X %#X %#X %#X %#X", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42));
+	//printf("RET: %d\n", ft_printf(" %#X %#X %#X %#X %#X %#X %#X", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42));
+	//printf("RET: %d\n", ft_printf(" %#x ", 0));
+	//printf("RET: %d\n", printf("%010i\n", 25987));
+	//printf("RET: %d\n", ft_printf("%010i\n", 25987));
+	//printf("RET: %d\n", printf("%.2s\n", str));
+	//printf("RET: %d\n", ft_printf("%.2s\n", str));
+	//printf("RET: %d\n", printf(" %-s ", "-"));
+	//printf("RET: %d\n", ft_printf(" %.4d ", -14));
+	//printf("RET: %d\n", ft_printf(" %03d ", -11));
+	//printf("RET: %d\n", printf(" %.2s %.1s ", "test", "-"));
+	//printf("RET: %d\n", ft_printf(" %.1s ", "-"));
+	//printf("RET: %d\n", printf("%0.10x str= %s\n", -42, str));
+	//printf("RET: %d\n", ft_printf("%0.10x str= %s\n", -42, str));
+	//printf("RET: %d\n", ft_printf("str= %s\n", "yes"));
+	//ft_printf("\ns = %s (ft_printf)\n", str);
+	//printf("s = %s (printf)\n", str);
 /*
 	ft_printf("TESTER (ft_printf):\n");
 	printf("return: %d\n\n", ft_printf(" NULL %s NULL ", NULL));
