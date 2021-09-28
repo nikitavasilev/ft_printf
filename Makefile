@@ -22,7 +22,8 @@ SRCS =		./srcs/ft_putchar.c \
 			./srcs/sharp_check.c \
 			./srcs/space_and_sign.c \
 			./srcs/utilities_zero_check.c \
-			./srcs/zero_check.c
+			./srcs/zero_check.c \
+			./srcs/ft_strcmp.c
 
 OBJS = $(SRCS:.c=.o)
 

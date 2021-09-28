@@ -6,7 +6,7 @@
 /*   By: nvasilev <nvasilev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 21:52:48 by nvasilev          #+#    #+#             */
-/*   Updated: 2021/09/27 11:15:16 by nvasilev         ###   ########.fr       */
+/*   Updated: 2021/09/29 01:25:27 by nvasilev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int		ft_isdigit(int c);
 int		ft_atoi(const char *str);
 size_t	ft_strlen(const char *s);
 int		isnum(const char c);
+int		ft_strcmp(char *s1, char *s2);
 
 int		putnbr_base_s(int64_t n, const char *base, int count, int minus);
 int		putnbr_base_u(size_t n, const char *base, int count);
